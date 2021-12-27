@@ -32,7 +32,7 @@ app.post("/api/uptemployee", (req, res) => {
     .then(
       db
         .collection("employee")
-        .findOne({ _id: ObjectId("61c1daaaabefd6762c7ebd4f") })
+        .findOne({ _id: ObjectId(obj_id.id) })
         .then(function (document) {
           res.send(document);
         })
@@ -40,7 +40,7 @@ app.post("/api/uptemployee", (req, res) => {
 });
 
 app.post("/api/delemployee", (req, res) => {
-  const obj_id = req.body.obj_id;
+  const obj_id = req.body;
   db.collection("employee")
     .deleteOne({ _id: ObjectId(obj_id.id) })
     .then(res.send("Employee Information Deleted"));
