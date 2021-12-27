@@ -39,6 +39,13 @@ app.post("/api/uptemployee", (req, res) => {
     );
 });
 
+app.post("/api/delemployee", (req, res) => {
+  const obj_id = req.body.obj_id;
+  db.collection("employee")
+    .deleteOne({ _id: ObjectId(obj_id.id) })
+    .then(res.send("Employee Information Deleted"));
+});
+
 app.post("/api/newemployee", (req, res) => {
   const obj = req.body;
   db.collection("employee")
